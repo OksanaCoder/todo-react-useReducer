@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import TodoSchema from "./validationSchema";
+import styles from "./TaskForm.module.scss";
 
 const TaskForm = ({ handleRemoveRask, handleAddTask }) => {
   const handleSubmit = (values, formikBag) => {
@@ -8,11 +10,25 @@ const TaskForm = ({ handleRemoveRask, handleAddTask }) => {
   };
   return (
     <>
-      <Formik initialValues={{ body: "" }} onSubmit={handleSubmit}>
-        <Form>
-          <Field name="body" />
-          <input type="submit" value="Add new task" />
-        </Form>
+      <Formik
+        initialValues={{ body: "" }}
+        onSubmit={handleSubmit}
+        validationSchema={TodoSchema}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            {errors.body && touched.body ? (
+              <Field name="body" className={styles.error} />
+            ) : (
+              <Field name="body" />
+            )}
+
+            {errors.body && touched.body ? (
+              <div className={styles.errorMessage}>{errors.body}</div>
+            ) : null}
+            <input type="submit" value="Add new task" />
+          </Form>
+        )}
       </Formik>
     </>
   );
