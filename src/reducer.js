@@ -43,7 +43,10 @@ const reducer = (state, action) => {
       };
     }
     case TYPES.FILTER_TASK: {
-      return state;
+      return {
+        ...state,
+        filter: action.payload
+      };
     }
 
     default:

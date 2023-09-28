@@ -4,7 +4,13 @@ import TaskList from "./components/TaskList";
 import useTodo from "./components/hooks/useTodo";
 
 function App() {
-  const { state, handleAddTask, handleRemoveTask, handleDoneTask } = useTodo();
+  const {
+    state,
+    handleAddTask,
+    handleRemoveTask,
+    handleDoneTask,
+    handleFilterTask
+  } = useTodo();
   return (
     <>
       <h2>ToDo List</h2>
@@ -15,6 +21,7 @@ function App() {
         filter={state.filter}
         handleRemoveTask={handleRemoveTask}
         handleDoneTask={handleDoneTask}
+        handleFilterTask={handleFilterTask}
       />
     </>
   );

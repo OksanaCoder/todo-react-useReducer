@@ -24,7 +24,16 @@ const useTodo = () => {
   const handleDoneTask = ({ id }) => {
     dispatch({ type: TYPES.DONE_TASK, payload: { id } });
   };
-  return { state, handleAddTask, handleRemoveTask, handleDoneTask };
+  const handleFilterTask = (filter) => {
+    dispatch({ type: TYPES.FILTER_TASK, payload: filter });
+  };
+  return {
+    state,
+    handleAddTask,
+    handleRemoveTask,
+    handleDoneTask,
+    handleFilterTask
+  };
 };
 
 export default useTodo;
