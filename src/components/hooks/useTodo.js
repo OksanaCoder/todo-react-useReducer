@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TYPES from "../../actionTypes";
 import reducer from "../../reducer";
@@ -8,7 +8,13 @@ const useTodo = () => {
     tasks: [],
     filter: "all"
   };
+
   const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    dispatch({ type: "SET_TASKS", payload: storedTasks });
+  }, []);
+
   const handleAddTask = (body) => {
     dispatch({ type: TYPES.ADD_TASK, payload: body });
   };

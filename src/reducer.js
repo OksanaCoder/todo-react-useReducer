@@ -13,15 +13,19 @@ const reducer = (state, action) => {
         isDone: false
       };
       const newTasks = [...state.tasks, task];
+      localStorage.setItem("tasks", JSON.stringify(newTasks));
       return {
         ...state,
         tasks: newTasks
       };
     }
     case TYPES.REMOVE_TASK: {
+      const updatedTasks = state.tasks.filter((task) => task.id !== id);
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
       return {
         ...state,
-        tasks: state.tasks.filter((task) => task.id !== id)
+        tasks: updatedTasks
       };
     }
     case TYPES.DONE_TASK: {
