@@ -5,7 +5,8 @@ import reducer from "../../reducer";
 
 const useTodo = () => {
   const initialState = {
-    tasks: []
+    tasks: [],
+    filter: "all"
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const handleAddTask = (body) => {

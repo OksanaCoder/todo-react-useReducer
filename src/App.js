@@ -12,6 +12,7 @@ function App() {
       <TaskFilter />
       <TaskList
         tasks={state.tasks}
+        filter={state.filter}
         handleRemoveTask={handleRemoveTask}
         handleDoneTask={handleDoneTask}
       />

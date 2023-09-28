@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import TodoSchema from "./validationSchema";
+import TodoSchema from "../utils/validationSchema";
 import styles from "./TaskForm.module.scss";
 
 const TaskForm = ({ handleRemoveRask, handleAddTask }) => {

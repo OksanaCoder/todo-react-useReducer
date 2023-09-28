@@ -38,6 +38,9 @@ const reducer = (state, action) => {
         tasks: updatedTasks
       };
     }
+    case TYPES.FILTER_TASK: {
+      return state;
+    }
 
     default:
       return state;
